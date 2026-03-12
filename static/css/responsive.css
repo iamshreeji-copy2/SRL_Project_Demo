@@ -1,0 +1,423 @@
+/* ============================================================
+   RESPONSIVE OVERRIDES — Mobile & Tablet
+   No existing desktop styles are changed.
+   Only media-query rules that kick in at smaller viewports.
+   ============================================================ */
+
+/* ─── GLOBAL HELPERS ──────────────────────────────────────── */
+img,
+audio,
+video {
+    max-width: 100%;
+    height: auto;
+}
+
+/* ─── TABLET  (≤ 992px) ──────────────────────────────────── */
+@media (max-width: 992px) {
+
+    /* Top bar */
+    #topBar .container-fluid {
+        flex-wrap: wrap;
+        justify-content: center !important;
+        gap: 8px;
+        text-align: center;
+    }
+
+    #topBar span {
+        font-size: 0.78rem !important;
+        text-align: center;
+    }
+
+    /* Masthead heading */
+    .masthead .site-heading h1,
+    .masthead .page-heading h1 {
+        font-size: 2rem !important;
+    }
+
+    /* Classify page panels */
+    .classify-page .upload-section {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .classify-page .panel {
+        width: 100% !important;
+        max-width: 500px;
+        min-height: auto !important;
+    }
+
+    /* Index intro card */
+    .intro-section {
+        padding: 0 10px !important;
+    }
+
+    .intro-card {
+        padding: 25px 20px !important;
+    }
+
+    .intro-card p {
+        font-size: 1.05rem !important;
+    }
+
+    /* About section */
+    .about-section {
+        padding: 0 10px !important;
+    }
+
+    .about-card {
+        padding: 25px 20px !important;
+    }
+
+    .about-card p {
+        font-size: 1.05rem !important;
+    }
+
+    .about-highlights {
+        gap: 15px;
+    }
+
+    /* Contact page */
+    .contact-wrapper {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .contact-info-panel,
+    .contact-form-panel {
+        max-width: 100% !important;
+        width: 100%;
+    }
+
+    .contact-info-panel {
+        overflow: visible !important;
+    }
+
+    .contact-info-panel::before,
+    .contact-info-panel::after {
+        display: none;
+    }
+
+    /* Footer */
+    footer .row {
+        text-align: center;
+    }
+
+    footer .col-md-4 {
+        margin-bottom: 25px;
+    }
+
+    footer ul {
+        text-align: center;
+    }
+}
+
+/* ─── MOBILE  (≤ 768px) ──────────────────────────────────── */
+@media (max-width: 768px) {
+
+    /* Top bar: stack vertically */
+    #topBar .container-fluid {
+        flex-direction: column;
+        gap: 6px;
+    }
+
+    #topBar img {
+        height: 2rem !important;
+    }
+
+    #topBar span {
+        font-size: 0.72rem !important;
+        line-height: 1.3;
+    }
+
+    /* Navbar */
+    #mainNav .navbar-brand {
+        font-size: 1.4rem !important;
+    }
+
+    #mainNav .navbar-collapse {
+        background: #fff;
+        padding: 10px 0;
+        border-top: 1px solid rgba(14, 56, 122, 0.1);
+    }
+
+    #mainNav .nav-link {
+        padding: 10px 15px !important;
+    }
+
+    /* Masthead heading */
+    .masthead .site-heading h1,
+    .masthead .page-heading h1 {
+        font-size: 1.6rem !important;
+        line-height: 1.3;
+    }
+
+    .masthead {
+        padding: 3rem 0 !important;
+    }
+
+    /* Classify page */
+    .classify-page .panel {
+        padding: 20px 15px !important;
+    }
+
+    .classify-page .result-img {
+        max-height: 160px !important;
+    }
+
+    .classify-page .result-text {
+        font-size: 1.3rem !important;
+    }
+
+    .classify-page .btn-classify {
+        padding: 10px 30px !important;
+        font-size: 0.85rem !important;
+    }
+
+    .classify-page .info-section {
+        padding: 15px !important;
+    }
+
+    .classify-page .info-section p {
+        font-size: 0.82rem !important;
+    }
+
+    /* Index cards */
+    .cards-section-header h4 {
+        font-size: 1.4rem !important;
+    }
+
+    .feature-card .card-body {
+        min-height: auto !important;
+        padding: 12px 10px !important;
+    }
+
+    .feature-card .card-img-wrapper {
+        width: 100px !important;
+        height: 100px !important;
+    }
+
+    /* Team page */
+    .team-section {
+        padding: 0 10px !important;
+        margin: 30px auto 50px !important;
+    }
+
+    .team-grid {
+        grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)) !important;
+        gap: 20px !important;
+    }
+
+    .team-card {
+        padding: 20px 15px !important;
+    }
+
+    .team-card .member-img-wrapper {
+        width: 120px !important;
+        height: 120px !important;
+    }
+
+    .team-card .member-name {
+        font-size: 1.1rem !important;
+    }
+
+    .section-intro p {
+        font-size: 1rem !important;
+    }
+
+    /* About page */
+    .about-card h3 {
+        font-size: 1.2rem !important;
+    }
+
+    .about-card p {
+        font-size: 0.95rem !important;
+    }
+
+    .highlight-item {
+        flex: 1 1 100% !important;
+        max-width: 100% !important;
+    }
+
+    .highlight-item .icon-circle {
+        width: 55px !important;
+        height: 55px !important;
+    }
+
+    .highlight-item .icon-circle i {
+        font-size: 1.3rem !important;
+    }
+
+    /* Contact page */
+    .contact-info-panel {
+        padding: 25px 20px !important;
+        overflow: visible !important;
+    }
+
+    .contact-info-panel::before,
+    .contact-info-panel::after {
+        display: none;
+    }
+
+    .contact-form-panel {
+        padding: 25px 20px !important;
+    }
+
+    .contact-form-panel h3 {
+        font-size: 1.2rem !important;
+    }
+
+    .form-row {
+        flex-direction: column;
+        gap: 0 !important;
+    }
+
+    /* Footer */
+    footer .container.py-5 {
+        padding: 30px 15px !important;
+    }
+
+    footer h5 {
+        font-size: 1rem !important;
+    }
+
+    footer p,
+    footer a {
+        font-size: 0.82rem !important;
+    }
+
+    /* Loading overlay */
+    #loadingOverlay .loading-content {
+        padding: 25px 20px !important;
+        max-width: 90vw !important;
+    }
+
+    #loadingOverlay .loading-title {
+        font-size: 1.2rem !important;
+    }
+
+    #loadingOverlay .loading-steps .step {
+        font-size: 0.85rem !important;
+    }
+}
+
+/* ─── SMALL MOBILE  (≤ 480px) ────────────────────────────── */
+@media (max-width: 480px) {
+
+    /* Top bar */
+    #topBar {
+        padding: 5px 0 !important;
+    }
+
+    #topBar img {
+        height: 1.6rem !important;
+    }
+
+    #topBar span {
+        font-size: 0.62rem !important;
+    }
+
+    /* Navbar */
+    #mainNav .navbar-brand {
+        font-size: 1.2rem !important;
+    }
+
+    /* Masthead */
+    .masthead .site-heading h1,
+    .masthead .page-heading h1 {
+        font-size: 1.3rem !important;
+    }
+
+    .masthead {
+        padding: 2rem 0 !important;
+    }
+
+    /* Classify panels: full width */
+    .classify-page .panel {
+        padding: 15px 12px !important;
+        border-radius: 12px !important;
+    }
+
+    .classify-page .file-upload-label {
+        padding: 18px 12px !important;
+    }
+
+    .classify-page .file-upload-label .upload-icon {
+        font-size: 1.5rem !important;
+    }
+
+    .classify-page .result-img {
+        max-height: 130px !important;
+    }
+
+    .classify-page .result-text {
+        font-size: 1.1rem !important;
+    }
+
+    /* Index intro */
+    .intro-card {
+        padding: 18px 15px !important;
+        border-radius: 12px !important;
+    }
+
+    .intro-card h3 {
+        font-size: 1.15rem !important;
+    }
+
+    .intro-card p {
+        font-size: 0.9rem !important;
+    }
+
+    /* Cards */
+    .feature-card .card-title {
+        font-size: 0.85rem !important;
+    }
+
+    .feature-card .card-desc {
+        font-size: 0.82rem !important;
+    }
+
+    .feature-card .btn-feature {
+        font-size: 0.7rem !important;
+        padding: 5px 12px !important;
+    }
+
+    /* Team */
+    .team-grid {
+        grid-template-columns: 1fr !important;
+    }
+
+    /* About highlights */
+    .about-highlights {
+        padding: 0 10px !important;
+    }
+
+    /* Contact */
+    .contact-info-panel h3 {
+        font-size: 1.15rem !important;
+    }
+
+    .contact-info-panel .subtitle {
+        font-size: 0.82rem !important;
+    }
+
+    .btn-send {
+        width: 100%;
+        padding: 12px !important;
+    }
+
+    /* Footer */
+    footer .container.py-5 {
+        padding: 20px 10px !important;
+    }
+
+    /* Loading overlay */
+    #loadingOverlay .loading-waveform {
+        margin-bottom: 20px !important;
+        height: 40px !important;
+    }
+
+    #loadingOverlay .loading-waveform span {
+        width: 3px !important;
+    }
+}

@@ -1,0 +1,213 @@
+{% extends "layout.html" %}
+{% block body %}
+<title>About Us | AST</title>
+
+<!-- Page Header-->
+<header style="background-color: #0e387a;" class="masthead">
+    <div class="container position-relative px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-7">
+                <div class="page-heading">
+
+                    <h1>About Us</h1>
+                    <span class="subheading"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Styles -->
+<style>
+    .reveal {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .reveal.visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .reveal-delay-1 {
+        transition-delay: 0.15s;
+    }
+
+    .reveal-delay-2 {
+        transition-delay: 0.3s;
+    }
+
+    .reveal-delay-3 {
+        transition-delay: 0.45s;
+    }
+
+    .about-section {
+        max-width: 1450px;
+        margin: 30px auto 40px;
+        padding: 0 15px;
+    }
+
+    .about-card {
+        background: #fff;
+        border-radius: 16px;
+        padding: 35px 40px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+        border-left: 5px solid #0e387a;
+        position: relative;
+        overflow: hidden;
+        margin-bottom: 25px;
+    }
+
+    .about-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 200px;
+        height: 200px;
+        background: radial-gradient(circle, rgba(14, 56, 122, 0.04) 0%, transparent 70%);
+        border-radius: 50%;
+        transform: translate(40px, -40px);
+    }
+
+    .about-card h3 {
+        color: #0e387a;
+        font-weight: 800;
+        font-size: 1.5rem;
+        margin-bottom: 18px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .about-card h3 i {
+        color: #1a6fd4;
+        font-size: 1.3rem;
+    }
+
+    .about-card p {
+        font-size: 1.3rem;
+        line-height: 1.8;
+        color: #444;
+        text-align: justify;
+    }
+
+    .about-highlights {
+        display: flex;
+        gap: 25px;
+        flex-wrap: wrap;
+        justify-content: center;
+        max-width: 1450px;
+        margin: 0 auto 40px;
+        padding: 0 15px;
+    }
+
+    .highlight-item {
+        background: #fff;
+        border-radius: 14px;
+        padding: 28px 25px;
+        flex: 1 1 280px;
+        max-width: 360px;
+        text-align: center;
+        box-shadow: 0 4px 18px rgba(0, 0, 0, 0.06);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .highlight-item:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 10px 30px rgba(14, 56, 122, 0.15);
+    }
+
+    .highlight-item .icon-circle {
+        width: 70px;
+        height: 70px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #eef2f9, #dfe6f2);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 15px;
+    }
+
+    .highlight-item .icon-circle i {
+        font-size: 1.6rem;
+        color: #0e387a;
+    }
+
+    .highlight-item h5 {
+        color: #0e387a;
+        font-weight: 700;
+        font-size: 1.05rem;
+        margin-bottom: 8px;
+    }
+
+    .highlight-item p {
+        color: #666;
+        font-size: 0.95rem;
+        line-height: 1.6;
+        margin: 0;
+    }
+</style>
+
+<!-- Main Content -->
+<div class="about-section">
+    <div class="about-card reveal">
+        <h3><i class="fas fa-bullseye"></i> Our Mission</h3>
+        <p>Speech and language are the most powerful means of communication between human beings. Speech carries
+            different levels of information such as linguistic message content, speaker's identity, his/her
+            health, emotions, attitude, gender, age, the acoustic environment in which it is recorded.</p>
+        <p>The aim of Speech Lab at DAU is to use this information hidden in speech and create an
+            interface between human speech and computer for certain important tasks such as speech and speaker
+            recognition, analysis of voice biometric attacks, speech synthesis, audio search applications, voice
+            conversion, etc. The group is currently focusing on algorithms and systems of speech processing.</p>
+        <p>The aim of the group is to provide the researchers the freedom to work together in pursuing the
+            ideas with passion and enthusiasm.</p>
+    </div>
+</div>
+
+<!-- Research Focus Highlights -->
+<div class="about-highlights">
+    <div class="highlight-item reveal reveal-delay-1">
+        <div class="icon-circle">
+            <i class="fas fa-brain"></i>
+        </div>
+        <h5>AI & Deep Learning</h5>
+        <p>Leveraging state-of-the-art neural networks for speech analysis and classification tasks.</p>
+    </div>
+
+    <div class="highlight-item reveal reveal-delay-2">
+        <div class="icon-circle">
+            <i class="fas fa-hands-helping"></i>
+        </div>
+        <h5>Assistive Technology</h5>
+        <p>Developing tools to support individuals with speech impairments and disabilities.</p>
+    </div>
+
+    <div class="highlight-item reveal reveal-delay-3">
+        <div class="icon-circle">
+            <i class="fas fa-shield-alt"></i>
+        </div>
+        <h5>Audio Security</h5>
+        <p>Detecting deepfake audio and voice spoofing attacks to ensure authentication integrity.</p>
+    </div>
+</div>
+
+<!-- Scroll Reveal Script -->
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var revealElements = document.querySelectorAll('.reveal');
+        var observer = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.15 });
+        revealElements.forEach(function (el) {
+            observer.observe(el);
+        });
+    });
+</script>
+
+{% endblock %}

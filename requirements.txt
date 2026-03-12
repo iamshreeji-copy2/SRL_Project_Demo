@@ -1,0 +1,13 @@
+flask
+matplotlib
+numpy
+librosa
+spafe
+tensorflow
+torch
+torchvision
+transformers
+h5py
+pandas
+openpyxl
+scipy

@@ -1,0 +1,247 @@
+{% extends "layout.html" %}
+{% block body %}
+
+<style>
+    .classify-page .upload-section {
+        display: flex;
+        gap: 30px;
+        justify-content: center;
+        flex-wrap: wrap;
+        margin-top: 30px;
+        margin-bottom: 20px;
+    }
+
+    .classify-page .panel {
+        background: rgba(255, 255, 255, 0.85);
+        backdrop-filter: blur(10px);
+        border-radius: 16px;
+        box-shadow: 0 4px 20px rgba(14, 56, 122, 0.12);
+        padding: 30px;
+        width: 420px;
+        min-height: 350px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        border: 1px solid rgba(14, 56, 122, 0.08);
+        transition: box-shadow 0.3s ease;
+    }
+
+    .classify-page .panel:hover {
+        box-shadow: 0 6px 30px rgba(14, 56, 122, 0.18);
+    }
+
+    .classify-page .panel-title {
+        font-size: 0.85rem;
+        font-weight: 700;
+        color: #0e387a;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+        margin-bottom: 20px;
+        position: relative;
+        padding-bottom: 10px;
+    }
+
+    .classify-page .panel-title::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 40px;
+        height: 3px;
+        background: linear-gradient(90deg, #0e387a, #1a6fd4);
+        border-radius: 2px;
+    }
+
+    .classify-page .file-upload-wrapper {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .classify-page .file-upload-label {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 25px 20px;
+        border: 2px dashed rgba(14, 56, 122, 0.25);
+        border-radius: 12px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        background: rgba(14, 56, 122, 0.03);
+    }
+
+    .classify-page .file-upload-label:hover {
+        border-color: #0e387a;
+        background: rgba(14, 56, 122, 0.06);
+    }
+
+    .classify-page .file-upload-label .upload-icon {
+        font-size: 2rem;
+        color: #0e387a;
+        margin-bottom: 8px;
+    }
+
+    .classify-page .file-upload-label span {
+        font-size: 0.85rem;
+        color: #555;
+        font-weight: 500;
+    }
+
+    .classify-page .file-upload-label .file-name-display {
+        font-size: 0.78rem;
+        color: #0e387a;
+        margin-top: 6px;
+        font-weight: 600;
+    }
+
+    .classify-page .file-input-hidden {
+        display: none;
+    }
+
+    .classify-page audio {
+        width: 100%;
+        margin-top: 10px;
+        border-radius: 8px;
+    }
+
+    .classify-page .result-img {
+        max-height: 220px;
+        object-fit: contain;
+        margin-bottom: 15px;
+        border-radius: 8px;
+    }
+
+    .classify-page .result-text {
+        font-size: 1.6rem;
+        font-weight: 700;
+        color: #0e387a;
+        text-align: center;
+        margin-top: 10px;
+    }
+
+    .classify-page .result-placeholder {
+        color: #aaa;
+        font-size: 0.9rem;
+        font-style: italic;
+        margin-top: 40px;
+        text-align: center;
+    }
+
+    .classify-page .btn-classify {
+        background: linear-gradient(135deg, #0e387a, #1a5fc2);
+        color: #fff;
+        border: none;
+        border-radius: 25px;
+        padding: 10px 40px;
+        font-weight: 700;
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 3px 12px rgba(14, 56, 122, 0.25);
+        margin-top: 10px;
+    }
+
+    .classify-page .btn-classify:hover {
+        background: linear-gradient(135deg, #1a5fc2, #0e387a);
+        box-shadow: 0 5px 20px rgba(14, 56, 122, 0.4);
+        transform: translateY(-2px);
+    }
+
+    .classify-page .info-section {
+        background: rgba(255, 255, 255, 0.7);
+        border-radius: 12px;
+        padding: 20px 25px;
+        margin-top: 20px;
+        margin-bottom: 10px;
+        border-left: 4px solid #0e387a;
+    }
+
+    .classify-page .info-section h3 {
+        color: #0e387a;
+        font-size: 1.1rem;
+        margin-bottom: 10px;
+    }
+
+    .classify-page .info-section p {
+        font-size: 0.88rem;
+        line-height: 1.6;
+        color: #444;
+    }
+</style>
+
+<!-- Page Header-->
+<header class="masthead">
+    <div class="container position-relative px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-12">
+                <div class="site-heading">
+                    <h1>Infant Cry Classification</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<div class="container classify-page">
+    <div class="info-section">
+        <h3><i class="fas fa-info-circle"></i> Why and How?</h3>
+        <p>
+            Infant cry classification helps early detection and diagnosis of an infant's condition since crying is
+            their only mode of communication. Upload a <strong>.wav</strong> audio file, click
+            <strong>Classify</strong>,
+            and the system will classify the cry as <strong>Normal Cry</strong> or <strong>Pathology Cry</strong>.
+        </p>
+    </div>
+
+    <form method="POST" enctype="multipart/form-data">
+        <div class="upload-section">
+            <div class="panel">
+                <div class="panel-title">Upload Audio</div>
+                <div class="file-upload-wrapper">
+                    <label class="file-upload-label" for="audioFileInput">
+                        <i class="fas fa-cloud-upload-alt upload-icon"></i>
+                        <span>Click to choose a .wav file</span>
+                        <span class="file-name-display" id="fileNameDisplay"></span>
+                    </label>
+                    <input type="file" class="file-input-hidden" name="file" id="audioFileInput" accept=".wav,.WAV"
+                        onchange="handleFileSelect(this);">
+                </div>
+                <audio id="audioPlayer" controls></audio>
+            </div>
+
+            <div class="panel">
+                <div class="panel-title">Result</div>
+                {% if pqr %}
+                <img src="{{abc}}" alt="Result" class="result-img">
+                <div class="result-text">{{pqr}}</div>
+                {% else %}
+                <div class="result-placeholder">
+                    Upload an audio file and click Classify to see results
+                </div>
+                {% endif %}
+            </div>
+        </div>
+
+        <div style="text-align: center; margin-bottom: 30px;">
+            <button type="submit" class="btn-classify"><i class="fas fa-search"></i> Classify</button>
+        </div>
+    </form>
+</div>
+
+<script>
+    function handleFileSelect(input) {
+        var audioPlayer = document.getElementById('audioPlayer');
+        var fileNameDisplay = document.getElementById('fileNameDisplay');
+        if (input.files && input.files[0]) {
+            fileNameDisplay.textContent = input.files[0].name;
+            var reader = new FileReader();
+            reader.onload = function (e) { audioPlayer.src = e.target.result; };
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+</script>
+
+{% endblock %}

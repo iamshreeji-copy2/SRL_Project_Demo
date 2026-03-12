@@ -1,0 +1,394 @@
+{% extends "layout.html" %}
+{% block body %}
+
+<!-- Page Header-->
+<header style="background-color:#0e387a;" class="masthead">
+    <title>Queries | AST</title>
+    <div class="container position-relative px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-5">
+                <div class="site-heading mb-5">
+                    <h1>Have a Query?</h1>
+                    <span class="subheading"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Styles -->
+<style>
+    .reveal {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .reveal.visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .reveal-delay-1 {
+        transition-delay: 0.15s;
+    }
+
+    .reveal-delay-2 {
+        transition-delay: 0.3s;
+    }
+
+    .contact-wrapper {
+        max-width: 1200px;
+        margin: 30px auto 40px;
+        padding: 0 15px;
+        display: flex;
+        gap: 30px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    /* Left: Contact Info Panel */
+    .contact-info-panel {
+        flex: 1 1 350px;
+        max-width: 400px;
+        background: linear-gradient(135deg, #0a2a5e, #0e387a);
+        border-radius: 16px;
+        padding: 40px 35px;
+        color: #fff;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .contact-info-panel::before {
+        content: '';
+        position: absolute;
+        bottom: -60px;
+        right: -60px;
+        width: 200px;
+        height: 200px;
+        background: rgba(255, 255, 255, 0.04);
+        border-radius: 50%;
+    }
+
+    .contact-info-panel::after {
+        content: '';
+        position: absolute;
+        top: -40px;
+        left: -40px;
+        width: 150px;
+        height: 150px;
+        background: rgba(255, 255, 255, 0.03);
+        border-radius: 50%;
+    }
+
+    .contact-info-panel h3 {
+        font-size: 1.4rem;
+        font-weight: 800;
+        margin-bottom: 10px;
+    }
+
+    .contact-info-panel .subtitle {
+        font-size: 0.95rem;
+        color: rgba(255, 255, 255, 0.65);
+        margin-bottom: 30px;
+        line-height: 1.6;
+    }
+
+    .contact-info-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 15px;
+        margin-bottom: 22px;
+    }
+
+    .contact-info-item .info-icon {
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.1);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+    }
+
+    .contact-info-item .info-icon i {
+        color: #4da6ff;
+        font-size: 1rem;
+    }
+
+    .contact-info-item .info-text h6 {
+        font-size: 0.85rem;
+        font-weight: 700;
+        margin-bottom: 3px;
+        color: #fff;
+    }
+
+    .contact-info-item .info-text p {
+        font-size: 0.88rem;
+        color: rgba(255, 255, 255, 0.65);
+        margin: 0;
+        line-height: 1.5;
+    }
+
+    /* Right: Form Panel */
+    .contact-form-panel {
+        flex: 1 1 500px;
+        max-width: 650px;
+        background: #fff;
+        border-radius: 16px;
+        padding: 40px;
+        box-shadow: 0 4px 25px rgba(0, 0, 0, 0.06);
+        border-left: 5px solid #0e387a;
+        position: relative;
+    }
+
+    .contact-form-panel::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 200px;
+        height: 200px;
+        background: radial-gradient(circle, rgba(14, 56, 122, 0.03) 0%, transparent 70%);
+        border-radius: 50%;
+        transform: translate(40px, -40px);
+    }
+
+    .contact-form-panel h3 {
+        color: #0e387a;
+        font-weight: 800;
+        font-size: 1.4rem;
+        margin-bottom: 5px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .contact-form-panel h3 i {
+        color: #1a6fd4;
+    }
+
+    .contact-form-panel .form-subtitle {
+        color: #777;
+        font-size: 0.95rem;
+        margin-bottom: 25px;
+    }
+
+    /* Form Fields */
+    .contact-form-panel .form-group {
+        margin-bottom: 18px;
+    }
+
+    .contact-form-panel label {
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: #333;
+        margin-bottom: 6px;
+        display: block;
+    }
+
+    .contact-form-panel .form-input {
+        width: 100%;
+        padding: 12px 16px;
+        border: 2px solid #e4e8f0;
+        border-radius: 10px;
+        font-size: 0.95rem;
+        color: #333;
+        transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        outline: none;
+        background: #fafbfd;
+        box-sizing: border-box;
+    }
+
+    .contact-form-panel .form-input:focus {
+        border-color: #0e387a;
+        box-shadow: 0 0 0 3px rgba(14, 56, 122, 0.1);
+        background: #fff;
+    }
+
+    .contact-form-panel .form-input::placeholder {
+        color: #aaa;
+        font-weight: 400;
+    }
+
+    .contact-form-panel textarea.form-input {
+        resize: vertical;
+        min-height: 130px;
+    }
+
+    .form-row {
+        display: flex;
+        gap: 18px;
+    }
+
+    .form-row .form-group {
+        flex: 1;
+    }
+
+    .btn-send {
+        background: linear-gradient(135deg, #0e387a, #1a5fc2);
+        color: #fff;
+        border: none;
+        border-radius: 28px;
+        padding: 13px 42px;
+        font-weight: 700;
+        font-size: 1rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 14px rgba(14, 56, 122, 0.22);
+        margin-top: 10px;
+    }
+
+    .btn-send:hover {
+        background: linear-gradient(135deg, #1a5fc2, #0e387a);
+        box-shadow: 0 6px 22px rgba(14, 56, 122, 0.4);
+        transform: translateY(-2px);
+    }
+
+    .btn-send i {
+        margin-left: 8px;
+    }
+
+    @media (max-width: 768px) {
+        .contact-wrapper {
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .contact-info-panel,
+        .contact-form-panel {
+            max-width: 100%;
+        }
+
+        .form-row {
+            flex-direction: column;
+            gap: 0;
+        }
+    }
+</style>
+
+<!-- Main Content -->
+<div class="contact-wrapper">
+    <!-- Left: Contact Info -->
+    <div class="contact-info-panel reveal">
+        <h3>Get in Touch</h3>
+        <p class="subtitle">We'd love to hear from you. Reach out to us through any of the channels below or fill out
+            the form.</p>
+
+        <div class="contact-info-item">
+            <div class="info-icon"><i class="fas fa-map-marker-alt"></i></div>
+            <div class="info-text">
+                <h6>Our Location</h6>
+                <p>CEP-006, Speech Research Lab<br>Dhirubhai Ambani University<br>Gandhinagar - 382 007</p>
+            </div>
+        </div>
+
+        <div class="contact-info-item">
+            <div class="info-icon"><i class="fas fa-phone"></i></div>
+            <div class="info-text">
+                <h6>Phone</h6>
+                <p>+91-79-30510587</p>
+            </div>
+        </div>
+
+        <div class="contact-info-item">
+            <div class="info-icon"><i class="fas fa-envelope"></i></div>
+            <div class="info-text">
+                <h6>Email</h6>
+                <p>speechlab@daiict.ac.in</p>
+            </div>
+        </div>
+
+        <div class="contact-info-item">
+            <div class="info-icon"><i class="fas fa-clock"></i></div>
+            <div class="info-text">
+                <h6>Working Hours</h6>
+                <p>Mon - Fri: 9:00 AM - 6:00 PM</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Right: Contact Form -->
+    <div class="contact-form-panel reveal reveal-delay-1">
+        <h3><i class="fas fa-paper-plane"></i> Send a Message</h3>
+        <p class="form-subtitle">Fill out the form below and we'll get back to you shortly.</p>
+
+        <form id="contactForm" action="/contact" method="POST">
+            {% if success is defined %}
+            {% if success %}
+            <div class="alert alert-success" style="border-radius: 12px; margin-bottom: 20px;">
+                <i class="fas fa-check-circle" style="margin-right: 8px;"></i>
+                <strong>Success!</strong> Your message has been sent to our team.
+            </div>
+            {% else %}
+            <div class="alert alert-danger" style="border-radius: 12px; margin-bottom: 20px;">
+                <i class="fas fa-exclamation-circle" style="margin-right: 8px;"></i>
+                <strong>Error!</strong> There was an issue sending your query. Please try again.
+            </div>
+            {% endif %}
+            {% endif %}
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="name"><i class="fas fa-user" style="margin-right: 6px; color: #1a6fd4;"></i>Name</label>
+                    <input class="form-input" id="name" name="name" type="text" placeholder="Your full name" required />
+                </div>
+                <div class="form-group">
+                    <label for="email"><i class="fas fa-envelope"
+                            style="margin-right: 6px; color: #1a6fd4;"></i>Email</label>
+                    <input class="form-input" id="email" name="email" type="email" placeholder="your@email.com"
+                        required />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="phone"><i class="fas fa-phone" style="margin-right: 6px; color: #1a6fd4;"></i>Phone
+                    Number</label>
+                <input class="form-input" id="phone" name="phone" type="tel" placeholder="+91 XXXXX XXXXX" required />
+            </div>
+
+            <div class="form-group">
+                <label for="message"><i class="fas fa-comment-dots" style="margin-right: 6px; color: #1a6fd4;"></i>Your
+                    Query</label>
+                <textarea class="form-input" id="message" name="message" placeholder="Write your message here..."
+                    required></textarea>
+            </div>
+
+            <button class="btn-send" id="submitButton" type="submit">
+                Send Message <i class="fas fa-arrow-right"></i>
+            </button>
+        </form>
+    </div>
+</div>
+
+<!-- Scroll Reveal Script -->
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var revealElements = document.querySelectorAll('.reveal');
+        var observer = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.15 });
+        revealElements.forEach(function (el) {
+            observer.observe(el);
+        });
+
+        // Prevent double submission
+        const form = document.getElementById('contactForm');
+        const submitBtn = document.getElementById('submitButton');
+        if (form) {
+            form.addEventListener('submit', function () {
+                submitBtn.disabled = true;
+                submitBtn.innerHTML = 'Sending... <i class="fas fa-spinner fa-spin"></i>';
+            });
+        }
+    });
+</script>
+
+{% endblock %}

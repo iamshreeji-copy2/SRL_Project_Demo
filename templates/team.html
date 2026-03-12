@@ -1,0 +1,332 @@
+{% extends "layout.html" %}
+{% block body %}
+<title>Our Team | AST</title>
+
+<!-- Page Header-->
+<header class="masthead">
+    <div class="container position-relative px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-12">
+                <div class="site-heading">
+                    <h1>Our Team</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Styles -->
+<style>
+    .reveal {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .reveal.visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .team-section {
+        max-width: 1400px;
+        margin: 50px auto 80px;
+        padding: 0 20px;
+    }
+
+    .team-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 35px;
+        justify-content: center;
+    }
+
+    .team-card {
+        background: #fff;
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
+        position: relative;
+        text-align: center;
+        padding: 30px 20px;
+        border: 1px solid rgba(14, 56, 122, 0.05);
+    }
+
+    .team-card:hover {
+        transform: translateY(-12px);
+        box-shadow: 0 20px 40px rgba(14, 56, 122, 0.12);
+    }
+
+    .team-card .member-img-wrapper {
+        width: 150px;
+        height: 150px;
+        margin: 0 auto 20px;
+        border-radius: 50%;
+        padding: 6px;
+        background: linear-gradient(135deg, #0e387a, #4da6ff);
+        box-shadow: 0 8px 20px rgba(14, 56, 122, 0.2);
+    }
+
+    .team-card .member-img {
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 4px solid #fff;
+    }
+
+    .team-card .member-name {
+        color: #0e387a;
+        font-weight: 800;
+        font-size: 1.25rem;
+        margin-bottom: 8px;
+    }
+
+    .team-card .member-role {
+        color: #666;
+        font-size: 0.95rem;
+        font-weight: 500;
+        margin-bottom: 15px;
+    }
+
+    .team-card .social-links {
+        display: flex;
+        justify-content: center;
+        gap: 12px;
+        margin-top: 15px;
+    }
+
+    .team-card .social-links a {
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        background: #f0f4f8;
+        color: #0e387a;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.9rem;
+        transition: all 0.3s ease;
+    }
+
+    .team-card .social-links a:hover {
+        background: #0e387a;
+        color: #fff;
+    }
+
+    .section-intro {
+        text-align: center;
+        max-width: 800px;
+        margin: 0 auto 50px;
+    }
+
+    .section-intro p {
+        font-size: 1.15rem;
+        color: #555;
+        line-height: 1.6;
+    }
+
+    /* Reveal delays for the grid */
+    .delay-1 {
+        transition-delay: 0.1s;
+    }
+
+    .delay-2 {
+        transition-delay: 0.2s;
+    }
+
+    .delay-3 {
+        transition-delay: 0.3s;
+    }
+
+    .delay-4 {
+        transition-delay: 0.4s;
+    }
+</style>
+
+<div class="team-section">
+    <div class="section-intro reveal">
+        <p>Meet the brilliant minds behind Assistive Speech Technologies. Our multidisciplinary team of researchers and
+            engineers is dedicated to pushing the boundaries of speech processing and AI.</p>
+    </div>
+
+    <div class="team-grid">
+        <!-- Dr. Hemant Patil -->
+        <div class="team-card reveal delay-1">
+            <div class="member-img-wrapper">
+                <img src="static/assets/sir.jpg" alt="Dr. Hemant Patil" class="member-img">
+            </div>
+            <h3 class="member-name">Dr. Hemant Patil</h3>
+            <p class="member-role">Principal Investigator</p>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#"><i class="fas fa-envelope"></i></a>
+                <a href="#"><i class="fas fa-globe"></i></a>
+            </div>
+        </div>
+
+        <!-- Priyanka Gupta -->
+        <div class="team-card reveal delay-2">
+            <div class="member-img-wrapper">
+                <img src="static/assets/priyanka.jpeg" alt="Priyanka Gupta" class="member-img">
+            </div>
+            <h3 class="member-name">Priyanka Gupta</h3>
+            <p class="member-role">Research Scholar</p>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#"><i class="fas fa-envelope"></i></a>
+            </div>
+        </div>
+
+        <!-- Aastha Kachhi -->
+        <div class="team-card reveal delay-3">
+            <div class="member-img-wrapper">
+                <img src="static/assets/aastha.jpg" alt="Aastha Kachhi" class="member-img">
+            </div>
+            <h3 class="member-name">Aastha Kachhi</h3>
+            <p class="member-role">Research Scholar</p>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#"><i class="fas fa-envelope"></i></a>
+            </div>
+        </div>
+
+        <!-- S. Uthiraa -->
+        <div class="team-card reveal delay-4">
+            <div class="member-img-wrapper">
+                <img src="static/assets/uthiraa.jpg" alt="S. Uthiraa" class="member-img">
+            </div>
+            <h3 class="member-name">S. Uthiraa</h3>
+            <p class="member-role">Research Scholar</p>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#"><i class="fas fa-envelope"></i></a>
+            </div>
+        </div>
+
+        <!-- Aditya Pusuluri -->
+        <div class="team-card reveal delay-1">
+            <div class="member-img-wrapper">
+                <img src="static/assets/aditya.jpeg" alt="Aditya Pusuluri" class="member-img">
+            </div>
+            <h3 class="member-name">Aditya Pusuluri</h3>
+            <p class="member-role">Research Scholar</p>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#"><i class="fas fa-envelope"></i></a>
+            </div>
+        </div>
+
+        <!-- Drashti Koladiya -->
+        <div class="team-card reveal delay-2">
+            <div class="member-img-wrapper">
+                <img src="static/assets/drashti.jpg" alt="Drashti Koladiya" class="member-img">
+            </div>
+            <h3 class="member-name">Drashti Koladiya</h3>
+            <p class="member-role">Research Scholar</p>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#"><i class="fas fa-envelope"></i></a>
+            </div>
+        </div>
+
+        <!-- Akshat Vora -->
+        <div class="team-card reveal delay-3">
+            <div class="member-img-wrapper">
+                <img src="static/assets/akshat.jpg" alt="Akshat Vora" class="member-img">
+            </div>
+            <h3 class="member-name">Akshat Vora</h3>
+            <p class="member-role">Research Scholar</p>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#"><i class="fas fa-envelope"></i></a>
+            </div>
+        </div>
+
+        <!-- Siddarth Rathod -->
+        <div class="team-card reveal delay-4">
+            <div class="member-img-wrapper">
+                <img src="static/assets/siddarth.jpg" alt="Siddarth Rathod" class="member-img">
+            </div>
+            <h3 class="member-name">Siddarth Rathod</h3>
+            <p class="member-role">Research Scholar</p>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#"><i class="fas fa-envelope"></i></a>
+            </div>
+        </div>
+
+        <!-- Prathamesh Bonde -->
+        <div class="team-card reveal delay-1">
+            <div class="member-img-wrapper">
+                <img src="static/assets/prathamesh.jpeg" alt="Prathamesh Bonde" class="member-img">
+            </div>
+            <h3 class="member-name">Prathamesh Bonde</h3>
+            <p class="member-role">Research Scholar</p>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#"><i class="fas fa-envelope"></i></a>
+            </div>
+        </div>
+
+        <!-- Ayush Jain -->
+        <div class="team-card reveal delay-2">
+            <div class="member-img-wrapper">
+                <img src="static/assets/ayush.jpg" alt="Ayush Jain" class="member-img">
+            </div>
+            <h3 class="member-name">Ayush Jain</h3>
+            <p class="member-role">Research Scholar</p>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#"><i class="fas fa-envelope"></i></a>
+            </div>
+        </div>
+
+        <!-- Prathav Kevadiya -->
+        <div class="team-card reveal delay-3">
+            <div class="member-img-wrapper">
+                <img src="static/assets/prathav.jpg" alt="Prathav Kevadiya" class="member-img">
+            </div>
+            <h3 class="member-name">Prathav Kevadiya</h3>
+            <p class="member-role">Research Scholar</p>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#"><i class="fas fa-envelope"></i></a>
+            </div>
+        </div>
+
+        <!-- Arth Shah -->
+        <div class="team-card reveal delay-4">
+            <div class="member-img-wrapper">
+                <img src="static/assets/arth.jpg" alt="Arth Shah" class="member-img">
+            </div>
+            <h3 class="member-name">Arth Shah</h3>
+            <p class="member-role">Research Scholar</p>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#"><i class="fas fa-envelope"></i></a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Scroll Reveal Script -->
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var revealElements = document.querySelectorAll('.reveal');
+
+        var observer = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        revealElements.forEach(function (el) {
+            observer.observe(el);
+        });
+    });
+</script>
+{% endblock %}

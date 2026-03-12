@@ -1,0 +1,394 @@
+{% extends "layout.html" %}
+{% block body %}
+
+
+<!-- Page Header-->
+<header class="masthead">
+    <title>Assistive Speech Technologies | SRLAB, DAU</title>
+    <div class="container position-relative px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-12">
+                <div class="site-heading">
+                    <h1>Assistive Speech Technologies</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Scroll Reveal Animation Styles -->
+<style>
+    .reveal {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .reveal.visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .reveal-delay-1 {
+        transition-delay: 0.1s;
+    }
+
+    .reveal-delay-2 {
+        transition-delay: 0.2s;
+    }
+
+    .reveal-delay-3 {
+        transition-delay: 0.3s;
+    }
+
+    .reveal-delay-4 {
+        transition-delay: 0.4s;
+    }
+
+    .reveal-delay-5 {
+        transition-delay: 0.5s;
+    }
+
+    .intro-section {
+        max-width: 1450px;
+        margin: 30px auto 10px;
+        padding: 0 15px;
+    }
+
+    .intro-card {
+        background: #fff;
+        border-radius: 16px;
+        padding: 35px 40px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+        border-left: 5px solid #0e387a;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .intro-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 200px;
+        height: 200px;
+        background: radial-gradient(circle, rgba(14, 56, 122, 0.04) 0%, transparent 70%);
+        border-radius: 50%;
+        transform: translate(40px, -40px);
+    }
+
+    .intro-card h3 {
+        color: #0e387a;
+        font-weight: 800;
+        font-size: 1.5rem;
+        margin-bottom: 15px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .intro-card h3 i {
+        color: #1a6fd4;
+        font-size: 1.3rem;
+    }
+
+    .intro-card p {
+        font-size: 1.3rem;
+        line-height: 1.8;
+        color: #444;
+        text-align: justify;
+    }
+</style>
+
+<div class="intro-section reveal">
+    <div class="intro-card">
+        <h3><i class="fas fa-volume-up"></i> What are Assistive Speech Technologies?</h3>
+        <p>Speech technologies can be effectively used in Assistive Technologies in a large variety of ways, such as
+            improving (or enhancing) the intelligibility of unintelligible speech of disabled and providing
+            communicative assistance (devices) for frail people or individuals with severe motor or language
+            impairments, such as dysarthria, cerebral palsy, Parkinson’s disease, Autism Spectrum Disorder.</p>
+
+        <P>In addition, the design of personalized Text-To-Speech for disabled persons is a socially relevant research
+            problem. However, there has been very less interaction in the intersection between researchers of Assistive
+            Technologies and speech technology.</P>
+
+        <p>Assistive Technologies allows individuals with disabilities to do things that would otherwise be difficult
+            for them. Assistive technologies provide universal access to televisions or telephones to make them
+            accessible to those who are visually challenged or have hearing impairments. Prof. Patil and his team of
+            DA-IICT use their experience to develop assistive speech technologies for the disabled.</p>
+        <P>It include:</P>
+    </div>
+</div>
+
+
+<!-- Card Styles -->
+<style>
+    .cards-section {
+        margin-top: 40px;
+        margin-bottom: 50px;
+        padding: 0 15px;
+    }
+
+    .cards-section-header {
+        text-align: center;
+        margin-bottom: 40px;
+    }
+
+    .cards-section-header h4 {
+        color: #0e387a;
+        font-weight: 800;
+        font-size: 1.8rem;
+        margin-bottom: 0;
+    }
+
+    .cards-section-header p {
+        color: #666;
+        font-size: 1.05rem;
+        margin-top: 0;
+    }
+
+    .cards-section-header .header-line {
+        width: 70px;
+        height: 4px;
+        background: linear-gradient(90deg, #0e387a, #1a6fd4);
+        border-radius: 2px;
+        margin: 14px auto 0;
+    }
+
+    .cards-row {
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+        flex-wrap: nowrap;
+        max-width: 1400px;
+        margin: 0 auto 30px;
+    }
+
+    .cards-row .feature-card {
+        flex: 1;
+        min-width: 200px;
+    }
+
+    .feature-card {
+        background: #fff;
+        border: none;
+        border-radius: 18px;
+        box-shadow: 0 5px 25px rgba(0, 0, 0, 0.08);
+        text-align: center;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        overflow: hidden;
+    }
+
+    .feature-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 14px 40px rgba(14, 56, 122, 0.2);
+    }
+
+    .feature-card .card-accent {
+        height: 5px;
+        background: linear-gradient(90deg, #0e387a, #2980d4, #0e387a);
+        background-size: 200% 100%;
+        transition: background-position 0.5s ease;
+    }
+
+    .feature-card:hover .card-accent {
+        background-position: 100% 0;
+    }
+
+    .feature-card .card-body {
+        padding: 12px 10px 18px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+        /* Snug spacing to remove white space */
+        min-height: 320px;
+    }
+
+    .feature-card .card-title {
+        font-size: 1rem;
+        /* Bigger font */
+        font-weight: 800;
+        color: #0e387a;
+        margin-bottom: 0;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        text-align: center;
+    }
+
+    .feature-card .card-desc {
+        font-size: 1rem;
+        /* Bigger font */
+        color: #666;
+        margin-bottom: 5px;
+        line-height: 1.3;
+        margin-top: 0;
+        text-align: center;
+    }
+
+    .feature-card .card-img-wrapper {
+        width: 150px;
+        /* Bigger image */
+        height: 150px;
+        /* Bigger image */
+        margin: 5px auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: transparent;
+        border-radius: 0;
+        overflow: hidden;
+        transition: all 0.3s ease;
+        position: relative;
+    }
+
+    .feature-card:hover .card-img-wrapper {
+        transform: scale(1.05);
+        /* Just a subtle lift */
+    }
+
+    .feature-card .card-img-top {
+        max-width: 100%;
+        max-height: 100%;
+        object-fit: contain;
+        /* Don't stretch or fill */
+        border-radius: 0;
+        transition: transform 0.5s ease;
+    }
+
+    .feature-card:hover .card-img-top {
+        transform: scale(1.05);
+    }
+
+    .feature-card .btn-feature {
+        display: inline-block;
+        background: linear-gradient(135deg, #0e387a, #1a5fc2);
+        color: #fff;
+        border: none;
+        border-radius: 20px;
+        padding: 6px 15px;
+        font-weight: 700;
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 14px rgba(14, 56, 122, 0.22);
+    }
+
+    .feature-card .btn-feature:hover {
+        background: linear-gradient(135deg, #1a5fc2, #0e387a);
+        box-shadow: 0 6px 22px rgba(14, 56, 122, 0.4);
+        color: #fff;
+        transform: translateY(-2px);
+    }
+
+    @media (max-width: 1100px) {
+        .cards-row {
+            flex-wrap: wrap;
+        }
+
+        .cards-row .feature-card {
+            flex: 0 1 45%;
+        }
+    }
+
+    @media (max-width: 600px) {
+        .cards-row .feature-card {
+            flex: 0 1 100%;
+        }
+    }
+</style>
+
+<!-- Main Content -->
+<div class="cards-section">
+    <div class="cards-section-header reveal">
+        <h4>Our Research Areas</h4>
+        <p>Explore our cutting-edge speech technology tools</p>
+        <div class="header-line"></div>
+    </div>
+
+    <!-- Single Row: all 5 cards -->
+    <div class="cards-row">
+        <div class="card feature-card reveal reveal-delay-1">
+            <div class="card-accent"></div>
+            <div class="card-body">
+                <h5 class="card-title">Emotion</h5>
+                <p class="card-desc">Detect emotions from audio</p>
+                <div class="card-img-wrapper">
+                    <img src="static/assets/emotions.png" class="card-img-top" alt="Emotion">
+                </div>
+                <a href="/emotions" class="btn-feature">Explore</a>
+            </div>
+        </div>
+
+        <div class="card feature-card reveal reveal-delay-2">
+            <div class="card-accent"></div>
+            <div class="card-body">
+                <h5 class="card-title">Infant Cry</h5>
+                <p class="card-desc">Classify normal/pathological</p>
+                <div class="card-img-wrapper">
+                    <img src="static/assets/infantcry.jpg" class="card-img-top" alt="Infant Cry">
+                </div>
+                <a href="/infant" class="btn-feature">Explore</a>
+            </div>
+        </div>
+
+        <div class="card feature-card reveal reveal-delay-3">
+            <div class="card-accent"></div>
+            <div class="card-body">
+                <h5 class="card-title">Dysarthric ASR</h5>
+                <p class="card-desc">Recognize speech patterns</p>
+                <div class="card-img-wrapper">
+                    <img src="static/assets/dysarthria.png" class="card-img-top" alt="Dysarthric ASR">
+                </div>
+                <a href="/dys" class="btn-feature">Explore</a>
+            </div>
+        </div>
+
+        <div class="card feature-card reveal reveal-delay-1">
+            <div class="card-accent"></div>
+            <div class="card-body">
+                <h5 class="card-title">Voice Liveness</h5>
+                <p class="card-desc">Spoof vs genuine detection</p>
+                <div class="card-img-wrapper">
+                    <img src="static/assets/vld.png" class="card-img-top" alt="Voice Liveness">
+                </div>
+                <a href="/vld" class="btn-feature">Explore</a>
+            </div>
+        </div>
+
+        <div class="card feature-card reveal reveal-delay-2">
+            <div class="card-accent"></div>
+            <div class="card-body">
+                <h5 class="card-title">Audio Deepfake</h5>
+                <p class="card-desc">Identify AI-generated audio</p>
+                <div class="card-img-wrapper">
+                    <img src="static/assets/add.png" class="card-img-top" alt="Deepfake">
+                </div>
+                <a href="/add" class="btn-feature">Explore</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Scroll Reveal Script -->
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var revealElements = document.querySelectorAll('.reveal');
+
+        var observer = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.15 });
+
+        revealElements.forEach(function (el) {
+            observer.observe(el);
+        });
+    });
+</script>
+
+{% endblock %}

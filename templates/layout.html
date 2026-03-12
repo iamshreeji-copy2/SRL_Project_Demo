@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='assets/dau_logo.jpg')}}" />
+    <!-- Font Awesome icons (free version)-->
+    <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
+    <!-- Google fonts-->
+    <!-- <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet"
+        type="text/css" /> -->
+    <link
+        href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800"
+        rel="stylesheet" type="text/css" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="{{ url_for('static', filename='css/styles.css')}}" rel="stylesheet" />
+    <link href="{{ url_for('static', filename='css/responsive.css')}}" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Top Bar (Bhashini/NLTM) -->
+    <div id="topBar"
+        style="background: linear-gradient(90deg, #071e3d, #0e387a); padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.08);">
+        <div class="container-fluid px-4 px-lg-5 d-flex align-items-center justify-content-between">
+            <a href="https://www.meity.gov.in/national-language-translation-mission"
+                style="display:flex; align-items:center;">
+                <img src="{{ url_for('static', filename='assets/logo_en.png')}}" style="height: 2.5rem;" alt="NLTM">
+            </a>
+            <div class="d-flex align-items-center" style="gap: 15px;">
+                <span
+                    style="font-size: 0.9rem; color: rgba(255,255,255,0.75); font-weight: 400; letter-spacing: 0.3px;">
+                    National Language Translation Mission (NLTM) | Project Bhashini
+                </span>
+                <img src="{{ url_for('static', filename='assets/dau_logo.jpg')}}"
+                    style="height: 3rem; border-radius: 6px;" alt="DAU Logo">
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Navigation -->
+    <nav class="navbar navbar-expand-lg" id="mainNav"
+        style="background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); padding: 0; transition: all 0.3s ease; z-index: 1000; border-bottom: 1px solid rgba(14,56,122,0.08);">
+        <div class="container-fluid px-4 px-lg-5">
+            <a class="navbar-brand" href="/"
+                style="font-size: 1.8rem; font-weight: 900; color: #0e387a; padding: 12px 0; letter-spacing: -0.5px;">
+                AST
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
+                aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"
+                style="border: 2px solid #0e387a; padding: 6px 10px;">
+                <i class="fas fa-bars" style="color: #0e387a;"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ms-auto align-items-center" style="gap: 5px;">
+                    <li class="nav-item">
+                        <a class="nav-link px-lg-3 py-3" href="/"
+                            style="font-size: 0.95rem; font-weight: 600; color: #333; transition: color 0.3s; position: relative;">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link px-lg-3 py-3" href="/about"
+                            style="font-size: 0.95rem; font-weight: 600; color: #333; transition: color 0.3s;">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link px-lg-3 py-3" href="/team"
+                            style="font-size: 0.95rem; font-weight: 600; color: #333; transition: color 0.3s;">Team</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link px-lg-3 py-3" href="/contact"
+                            style="font-size: 0.95rem; font-weight: 600; color: #333; transition: color 0.3s;">Queries</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle px-lg-3 py-3" href="#" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false"
+                            style="font-size: 0.95rem; font-weight: 600; color: #0e387a; background: linear-gradient(135deg, rgba(14,56,122,0.08), rgba(14,56,122,0.04)); border-radius: 8px; padding: 8px 16px !important;">
+                            <i class="fas fa-microscope" style="margin-right: 5px;"></i> Research
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end"
+                            style="border: none; box-shadow: 0 8px 30px rgba(0,0,0,0.12); border-radius: 12px; padding: 8px 0; margin-top: 8px;">
+                            <li><a class="dropdown-item" href="/emotions"
+                                    style="padding: 10px 20px; font-size: 0.9rem; transition: all 0.2s;"><i
+                                        class="fas fa-smile"
+                                        style="margin-right: 8px; color: #1a6fd4; width: 16px;"></i>Emotions</a></li>
+                            <li><a class="dropdown-item" href="/infant"
+                                    style="padding: 10px 20px; font-size: 0.9rem;"><i class="fas fa-baby"
+                                        style="margin-right: 8px; color: #1a6fd4; width: 16px;"></i>Infant Cry</a></li>
+                            <li><a class="dropdown-item" href="/dys" style="padding: 10px 20px; font-size: 0.9rem;"><i
+                                        class="fas fa-comment-medical"
+                                        style="margin-right: 8px; color: #1a6fd4; width: 16px;"></i>Dysarthric
+                                    Speech</a></li>
+                            <li><a class="dropdown-item" href="/vld" style="padding: 10px 20px; font-size: 0.9rem;"><i
+                                        class="fas fa-microphone"
+                                        style="margin-right: 8px; color: #1a6fd4; width: 16px;"></i>Voice Liveness</a>
+                            </li>
+                            <li><a class="dropdown-item" href="/add" style="padding: 10px 20px; font-size: 0.9rem;"><i
+                                        class="fas fa-shield-alt"
+                                        style="margin-right: 8px; color: #1a6fd4; width: 16px;"></i>Audio Deepfake</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Navbar Styles & Scroll Behavior -->
+    <style>
+        #mainNav {
+            position: sticky;
+            top: 0;
+        }
+
+        #mainNav .nav-link:hover {
+            color: #0e387a !important;
+        }
+
+        #mainNav .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 2px;
+            background: #0e387a;
+            transition: width 0.3s ease;
+            border-radius: 1px;
+        }
+
+        #mainNav .nav-link:hover::after {
+            width: 60%;
+        }
+
+        #mainNav .dropdown-toggle::after {
+            display: none;
+        }
+
+        #mainNav .dropdown-item:hover {
+            background: rgba(14, 56, 122, 0.06);
+            color: #0e387a;
+        }
+
+        #mainNav.scrolled {
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+            background: rgba(255, 255, 255, 0.98) !important;
+        }
+    </style>
+
+    <script>
+        window.addEventListener('scroll', function () {
+            var nav = document.getElementById('mainNav');
+            if (window.scrollY > 50) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+    </script>
+
+    {% block body %} {% endblock %}
+
+
+    <!-- Footer-->
+    <footer style="background: linear-gradient(135deg, #0a2a5e, #0e387a); color: #fff; padding: 0; margin-top: 40px;">
+        <div class="container-fluid px-0">
+            <!-- Main Footer Content -->
+            <div class="container py-5">
+                <div class="row">
+                    <!-- About Column -->
+                    <div class="col-md-4 mb-4 mb-md-0">
+                        <h5 style="font-weight: 700; font-size: 1.15rem; margin-bottom: 15px; color: #fff;">
+                            <i class="fas fa-microphone-alt" style="margin-right: 8px; color: #4da6ff;"></i>
+                            Speech Research Lab
+                        </h5>
+                        <p style="font-size: 0.88rem; color: rgba(255,255,255,0.7); line-height: 1.7;">
+                            Developing cutting-edge assistive speech technologies for the disabled using AI and deep
+                            learning.
+                        </p>
+                    </div>
+                    <!-- Quick Links -->
+                    <div class="col-md-4 mb-4 mb-md-0">
+                        <h5 style="font-weight: 700; font-size: 1.15rem; margin-bottom: 15px; color: #fff;">Quick Links
+                        </h5>
+                        <ul style="list-style: none; padding: 0; margin: 0;">
+                            <li style="margin-bottom: 8px;"><a href="/emotions"
+                                    style="color: rgba(255,255,255,0.7); text-decoration: none; font-size: 0.88rem; transition: color 0.3s;">→
+                                    Emotion Classification</a></li>
+                            <li style="margin-bottom: 8px;"><a href="/infant"
+                                    style="color: rgba(255,255,255,0.7); text-decoration: none; font-size: 0.88rem;">→
+                                    Infant Cry Classification</a></li>
+                            <li style="margin-bottom: 8px;"><a href="/dys"
+                                    style="color: rgba(255,255,255,0.7); text-decoration: none; font-size: 0.88rem;">→
+                                    Dysarthric ASR</a></li>
+                            <li style="margin-bottom: 8px;"><a href="/vld"
+                                    style="color: rgba(255,255,255,0.7); text-decoration: none; font-size: 0.88rem;">→
+                                    Voice Liveness Detection</a></li>
+                            <li style="margin-bottom: 8px;"><a href="/add"
+                                    style="color: rgba(255,255,255,0.7); text-decoration: none; font-size: 0.88rem;">→
+                                    Audio Deepfake Detection</a></li>
+                        </ul>
+                    </div>
+                    <!-- Contact -->
+                    <div class="col-md-4">
+                        <h5 style="font-weight: 700; font-size: 1.15rem; margin-bottom: 15px; color: #fff;">Contact Us
+                        </h5>
+                        <p style="font-size: 0.88rem; color: rgba(255,255,255,0.7); line-height: 1.8; margin: 0;">
+                            <i class="fas fa-map-marker-alt" style="color: #4da6ff; margin-right: 8px;"></i>
+                            CEP-006, Speech Research Lab<br>
+                            <span style="margin-left: 22px;">Dhirubhai Ambani University</span><br>
+                            <span style="margin-left: 22px;">Gandhinagar - 382 007</span>
+                        </p>
+                        <p style="font-size: 0.88rem; color: rgba(255,255,255,0.7); margin-top: 10px;">
+                            <i class="fas fa-phone" style="color: #4da6ff; margin-right: 8px;"></i>
+                            +91-79-30510587
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <!-- Bottom Bar -->
+            <div style="background: rgba(0,0,0,0.2); padding: 15px 0; text-align: center;">
+                <span style="font-size: 0.82rem; color: rgba(255,255,255,0.5);">
+                    Copyright &copy; 2024 Speech Research Lab, DAU. All rights reserved.
+                </span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Loading Overlay -->
+    <div id="loadingOverlay" style="display:none;">
+        <div class="loading-content">
+            <div class="loading-waveform">
+                <span></span><span></span><span></span><span></span><span></span>
+                <span></span><span></span><span></span><span></span><span></span>
+            </div>
+            <div class="loading-spinner">
+                <i class="fas fa-cog fa-spin"></i>
+            </div>
+            <h3 class="loading-title">Processing Your Audio</h3>
+            <div class="loading-steps">
+                <div class="step active" id="step1"><i class="fas fa-check-circle"></i> Loading model...</div>
+                <div class="step" id="step2"><i class="fas fa-circle"></i> Processing audio signal...</div>
+                <div class="step" id="step3"><i class="fas fa-circle"></i> Extracting features...</div>
+                <div class="step" id="step4"><i class="fas fa-circle"></i> Generating result...</div>
+            </div>
+            <div class="loading-progress-bar">
+                <div class="loading-progress-fill"></div>
+            </div>
+            <p class="loading-hint">This may take a moment. Please wait...</p>
+        </div>
+    </div>
+
+    <style>
+        #loadingOverlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(10, 30, 70, 0.92);
+            backdrop-filter: blur(8px);
+            z-index: 99999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: overlayFadeIn 0.4s ease;
+        }
+
+        @keyframes overlayFadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        #loadingOverlay .loading-content {
+            text-align: center;
+            color: #fff;
+            max-width: 420px;
+            padding: 40px;
+        }
+
+        /* Waveform Animation */
+        #loadingOverlay .loading-waveform {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
+            margin-bottom: 30px;
+            height: 60px;
+        }
+
+        #loadingOverlay .loading-waveform span {
+            display: inline-block;
+            width: 5px;
+            background: linear-gradient(180deg, #4da6ff, #0e387a);
+            border-radius: 3px;
+            animation: waveBar 1.2s ease-in-out infinite;
+        }
+
+        #loadingOverlay .loading-waveform span:nth-child(1) {
+            height: 20px;
+            animation-delay: 0s;
+        }
+
+        #loadingOverlay .loading-waveform span:nth-child(2) {
+            height: 35px;
+            animation-delay: 0.1s;
+        }
+
+        #loadingOverlay .loading-waveform span:nth-child(3) {
+            height: 50px;
+            animation-delay: 0.2s;
+        }
+
+        #loadingOverlay .loading-waveform span:nth-child(4) {
+            height: 40px;
+            animation-delay: 0.3s;
+        }
+
+        #loadingOverlay .loading-waveform span:nth-child(5) {
+            height: 55px;
+            animation-delay: 0.15s;
+        }
+
+        #loadingOverlay .loading-waveform span:nth-child(6) {
+            height: 30px;
+            animation-delay: 0.25s;
+        }
+
+        #loadingOverlay .loading-waveform span:nth-child(7) {
+            height: 45px;
+            animation-delay: 0.35s;
+        }
+
+        #loadingOverlay .loading-waveform span:nth-child(8) {
+            height: 55px;
+            animation-delay: 0.05s;
+        }
+
+        #loadingOverlay .loading-waveform span:nth-child(9) {
+            height: 25px;
+            animation-delay: 0.2s;
+        }
+
+        #loadingOverlay .loading-waveform span:nth-child(10) {
+            height: 15px;
+            animation-delay: 0.3s;
+        }
+
+        @keyframes waveBar {
+
+            0%,
+            100% {
+                transform: scaleY(0.4);
+                opacity: 0.5;
+            }
+
+            50% {
+                transform: scaleY(1);
+                opacity: 1;
+            }
+        }
+
+        /* Spinner */
+        #loadingOverlay .loading-spinner {
+            font-size: 2rem;
+            color: #4da6ff;
+            margin-bottom: 18px;
+        }
+
+        /* Title */
+        #loadingOverlay .loading-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 25px;
+            letter-spacing: 0.5px;
+        }
+
+        /* Steps */
+        #loadingOverlay .loading-steps {
+            text-align: left;
+            margin: 0 auto 25px;
+            max-width: 280px;
+        }
+
+        #loadingOverlay .loading-steps .step {
+            padding: 8px 0;
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.35);
+            transition: all 0.5s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        #loadingOverlay .loading-steps .step.active {
+            color: #fff;
+        }
+
+        #loadingOverlay .loading-steps .step.done {
+            color: #4dff88;
+        }
+
+        #loadingOverlay .loading-steps .step.done i {
+            color: #4dff88;
+        }
+
+        #loadingOverlay .loading-steps .step.active i {
+            color: #4da6ff;
+            animation: pulse 1s ease infinite;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                opacity: 0.5;
+            }
+
+            50% {
+                opacity: 1;
+            }
+        }
+
+        /* Progress Bar */
+        #loadingOverlay .loading-progress-bar {
+            width: 100%;
+            height: 6px;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 3px;
+            overflow: hidden;
+            margin-bottom: 18px;
+        }
+
+        #loadingOverlay .loading-progress-fill {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, #4da6ff, #0e387a, #4da6ff);
+            background-size: 200% 100%;
+            border-radius: 3px;
+            animation: progressShimmer 2s linear infinite;
+            transition: width 1s ease;
+        }
+
+        @keyframes progressShimmer {
+            0% {
+                background-position: 200% 0;
+            }
+
+            100% {
+                background-position: -200% 0;
+            }
+        }
+
+        /* Hint */
+        #loadingOverlay .loading-hint {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.5);
+            font-style: italic;
+        }
+    </style>
+
+    <script>
+        // Loading overlay logic — triggers on POST form submissions
+        (function () {
+            document.addEventListener('DOMContentLoaded', function () {
+                var forms = document.querySelectorAll('form[method="POST"]');
+                forms.forEach(function (form) {
+                    form.addEventListener('submit', function (e) {
+                        // Only trigger if a file is selected
+                        var fileInput = form.querySelector('input[type="file"]');
+                        if (fileInput && fileInput.files.length === 0) return;
+
+                        var overlay = document.getElementById('loadingOverlay');
+                        if (!overlay) return;
+
+                        overlay.style.display = 'flex';
+
+                        var steps = ['step1', 'step2', 'step3', 'step4'];
+                        var progressFill = overlay.querySelector('.loading-progress-fill');
+                        var currentStep = 0;
+
+                        // Animate step 1 immediately
+                        function activateStep(idx) {
+                            if (idx >= steps.length) return;
+                            // Mark previous as done
+                            if (idx > 0) {
+                                var prev = document.getElementById(steps[idx - 1]);
+                                prev.classList.remove('active');
+                                prev.classList.add('done');
+                                prev.querySelector('i').className = 'fas fa-check-circle';
+                            }
+                            // Activate current
+                            var curr = document.getElementById(steps[idx]);
+                            curr.classList.add('active');
+                            curr.querySelector('i').className = 'fas fa-spinner fa-spin';
+
+                            // Update progress
+                            var pct = ((idx + 1) / steps.length) * 90;
+                            progressFill.style.width = pct + '%';
+                        }
+
+                        activateStep(0);
+
+                        // Step through with delays
+                        setTimeout(function () { activateStep(1); }, 1500);
+                        setTimeout(function () { activateStep(2); }, 3500);
+                        setTimeout(function () { activateStep(3); }, 6000);
+                    });
+                });
+            });
+        })();
+    </script>
+
+    <!-- Bootstrap core JS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Core theme JS-->
+    <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+</body>
+
+</html>
